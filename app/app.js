@@ -1,4 +1,4 @@
 'use strict';
 
-angular.module('footie', ['footie.controllers']);
+angular.module('footie', ['footie.controllers','footie.services']);
 

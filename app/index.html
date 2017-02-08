@@ -15,15 +15,22 @@
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body ng-app="footie" ng-controller="teamsController">
+  <input type="text" ng-model="nameFilter" placeholder="Search..." />
   <table>
     <thead>
-        <tr><th>Premiere League Teams</th></tr>
+        <tr>
+            <th>No</th>
+            <th>Logo</th>
+            <th>Team Name</th>
+            <th>Team Squad Value</th>
+        </tr>
     </thead>  
-    <tbody>
-        <tr ng-repeat="team in teamsList">
+      <tbody>
+        <tr ng-repeat="team in teamsList | filter: nameFilter">
             <td>{{$index +1}}</td>
-            <td>{{team.Driver.givenName}}</td>
-            <td>{{team.nationality}}</td>
+            <td><img src="{{team.crestUrl}}" width="50" height="50" /></td>
+            <td>{{team.name}}</td>
+            <td>{{team.squadMarketValue}}</td>
         </tr>  
     </tbody>
   </table>
@@ -32,8 +39,6 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
 
-    
-
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
@@ -41,6 +46,7 @@
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="app.js"></script>
   <script src="controller.js"></script>
+  <script src="services.js"></script>
   <script src="components/version/version.js"></script>
   <script src="components/version/version-directive.js"></script>
   <script src="components/version/interpolate-filter.js"></script>

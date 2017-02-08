@@ -1,27 +1,9 @@
-angular.module('footie.controllers',[]).controller('teamsController', function($scope) {
-    $scope.teamsList = [
-      {
-          Driver: {
-              givenName: 'Sebastian',
-              familyName: 'Vettel'
-          },
-          points: 322,
-          nationality: "German",
-          Constructors: [
-              {name: "Red Bull"}
-          ]
-      },
-      {
-          Driver: {
-          givenName: 'Fernando',
-              familyName: 'Alonso'
-          },
-          points: 207,
-          nationality: "Spanish",
-          Constructors: [
-              {name: "Ferrari"}
-          ]
-      }  
-    ];
-    
+angular.module('footie.controllers',[]).controller('teamsController', function($scope, teamsAPIservice) {
+    $scope.nameFilter = '';
+    $scope.teamsList = [];
+    teamsAPIservice.getTeams()
+        .success(function(response){
+            //get the data from API
+            $scope.teamsList = response.teams;
+        })
 });
