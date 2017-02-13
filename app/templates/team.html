@@ -1,0 +1,28 @@
+<section id="main">
+  <a href="./#/teams"><- Back to teams list</a>
+  <nav id="secondary" class="main-nav">
+    <div class="driver-picture">
+      <div class="avatar">
+        <img ng-show="team" src="{{team.crestUrl}}" />
+        Team: {{team.name}}
+      </div>
+    </div>
+  </nav>
+
+  <div class="main-content">
+    <table class="table">
+      <thead>
+        <th>Date</th> <th>Home Team</th> <th>Away Team</th> <th>Result</th>
+      </thead>
+      <tbody>
+        <tr ng-repeat="fixture in fixtures">
+          <td>{{fixture.date}}</td>
+          <td>{{fixture.homeTeamName}}</td>
+          <td>{{fixture.awayTeamName}}</td>
+          <td>{{fixture.result.goalsHomeTeam}} : {{fixture.result.goalsAwayTeam}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</section>
