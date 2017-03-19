@@ -16,7 +16,7 @@
       </thead>
       <tbody>
         <tr ng-repeat="fixture in fixtures">
-          <td>{{fixture.date}}</td>
+          <td>{{fixture.date | date : 'dd-MM-yyyy'}}</td>
           <td>{{fixture.homeTeamName}}</td>
           <td>{{fixture.awayTeamName}}</td>
           <td>{{fixture.result.goalsHomeTeam}} : {{fixture.result.goalsAwayTeam}}</td>
