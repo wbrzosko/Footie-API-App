@@ -1,0 +1,35 @@
+<nav>    
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="./#/table">Table</a></li>
+        <li><a ng-href="./#/teams">Teams</a></li>
+        <li><a><input type="text" ng-model="nameFilter" placeholder="Search..." /></a></li>
+    </ul>
+</nav>
+  <table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Position</th>
+            <th>Team</th>
+            <th>Pts</th>
+            <th>M</th>
+            <th>W</th>
+            <th>D</th>
+            <th>L</th>
+            <th>G+</th>
+            <th>G-</th>
+        </tr>
+    </thead>  
+      <tbody>
+        <tr ng-repeat="team in teamsList | filter: nameFilter">
+            <td>{{team.position}}</td>
+            <td><a ng-href="#/team/{{team.teamID}}">{{team.teamName}}</a></td>
+            <td>{{team.points}}</td>
+            <td>{{team.playedGames}}</td>
+            <td>{{team.wins}}</td>
+            <td>{{team.draws}}</td>
+            <td>{{team.losses}}</td>
+            <td>{{team.goals}}</td>
+            <td>{{team.goalsAgainst}}</td>
+        </tr>  
+    </tbody>
+  </table>

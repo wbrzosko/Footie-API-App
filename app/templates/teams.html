@@ -1,16 +1,20 @@
-  <input type="text" ng-model="nameFilter" placeholder="Search..." />
+<nav>    
+    <ul class="nav nav-tabs">
+        <li><a href="./#/table">Table</a></li>
+        <li class="active"><a ng-href="./#/teams">Teams</a></li>
+        <li><a><input type="text" ng-model="nameFilter" placeholder="Search..." /></a></li>
+    </ul>
+</nav>
   <table class="table table-striped">
     <thead>
         <tr>
-            <th>No</th>
             <th>Logo</th>
             <th>Team Name</th>
-            <th>Team Squad Value</th>
+            <th>Team Value</th>
         </tr>
     </thead>  
       <tbody>
         <tr ng-repeat="team in teamsList | filter: nameFilter">
-            <td>{{$index +1}}</td>
             <td><img src="{{team.crestUrl}}" width="50" height="50" /></td>
             <td><a ng-href="#/team/{{team.teamID}}">{{team.name}}</a></td>
             <td>{{team.squadMarketValue}}</td>

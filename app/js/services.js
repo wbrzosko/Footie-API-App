@@ -46,5 +46,16 @@ angular.module('footie.services',[]).
             headers: {'X-Auth-Token':'e56f76ecae3744739e74519f39d8587d'}
             });
     }
+    teamsAPI.getTable = function() {
+        return $http({
+            method: 'GET',
+            url: 'http://api.football-data.org/v1/competitions/426/leagueTable',
+            params: {
+                format: 'json',
+                json_callback: 'JSON_CALLBACK'
+            },
+            headers: {'X-Auth-Token':'e56f76ecae3744739e74519f39d8587d'}
+        });
+    } 
     return teamsAPI;
 });

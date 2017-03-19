@@ -4,7 +4,6 @@ angular.module('footie.controllers',[])
     .controller('teamsController', function($scope, teamsAPIservice) {
     $scope.nameFilter = '';
     $scope.teamsList = [];
-    //$scope.teamId = parseInt(response._links.self.href.text().match(/\d+/)[0], 10);
     teamsAPIservice.getTeams()
         .success(function(response){
             //get the data from API
@@ -48,5 +47,21 @@ angular.module('footie.controllers',[])
         teamsAPIservice.getTeamPlayers($scope.id)
         .success(function(response){
             $scope.players = response.players; 
+        });
+    })
+
+    /* Controller which displays table with results */
+    .controller('tableController', function($scope, teamsAPIservice) {
+    $scope.nameFilter = '';
+    $scope.teamsList = [];
+    teamsAPIservice.getTable()
+        .success(function(response){
+            //get the data from API
+            $scope.teamsList = response.standing;
+                //retrieving each team's ID from the URL
+                angular.forEach($scope.teamsList, function(item) {
+                slug = item._links.team.href.split('teams/').pop();
+                item.teamID = slug; 
+            });
         });
     });
