@@ -12,17 +12,16 @@
     </div>
   </nav>
 
-  <div class="main-content">
+  <div class="main-content ">
     <table class="table table-striped">
       <thead>
-        <th>Date</th> <th>Home Team</th> <th>Away Team</th> <th>Result</th>
+       <th>Date</th> <th>Teams</th> <th>Result</th>
       </thead>
       <tbody>
         <tr ng-repeat="fixture in fixtures">
           <td>{{fixture.date | date : 'dd-MM-yyyy'}}</td>
-          <td>{{fixture.homeTeamName}}</td>
-          <td>{{fixture.awayTeamName}}</td>
-          <td>{{fixture.result.goalsHomeTeam}} : {{fixture.result.goalsAwayTeam}}</td>
+          <td><p>{{fixture.homeTeamName}}</p><p>{{fixture.awayTeamName}}</p></td>
+          <td><p>{{fixture.result.goalsHomeTeam}}</p><p>{{fixture.result.goalsAwayTeam}}</p></td>
         </tr>
       </tbody>
     </table>
