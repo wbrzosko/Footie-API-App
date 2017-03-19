@@ -6,4 +6,4 @@ Installing:
 
 Clone repository and run npm install.
 
-
+Demo: http://footie.wojtek.no
