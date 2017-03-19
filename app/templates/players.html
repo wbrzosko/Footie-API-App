@@ -1,0 +1,32 @@
+<section id="main">
+  <nav>    
+    <ul class="nav nav-tabs">
+        <li><a href="./#/teams">Back to teams list</a></li>
+        <li><a ng-href="./#/team/{{id}}">Team</a></li>
+        <li class="active"><a ng-href="./#/team/{{id}}/players">Players</a></li>
+    </ul>
+    <div class="container-fluid">
+        <div class="text-center">
+            <img ng-show="team" src="{{team.crestUrl}}" height="100" />
+        </div>
+    </div>
+  </nav>
+      
+    <table class="table table-striped">
+      <thead>
+        <th>Name</th> <th>Position</th> <th>Number</th> <th>DOB</th> <th>Nationality</th> <th>Contract</th> <th>Value</th>
+      </thead>
+      <tbody>
+        <tr ng-repeat="player in players">
+          <td>{{player.name}}</td>
+          <td>{{player.position}}</td>
+          <td>{{player.jerseyNumber}}</td>
+          <td>{{player.dateOfBirth}}</td>
+          <td>{{player.nationality}}</td>
+          <td>{{player.contractUntil}}</td>
+          <td>{{player.marketValue}}</td>
+        </tr>
+      </tbody>
+    </table>  
+      
+</section>

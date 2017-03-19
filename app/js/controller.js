@@ -21,15 +21,32 @@ angular.module('footie.controllers',[])
     .controller('teamController', function($scope, $routeParams, teamsAPIservice) {
         $scope.id = $routeParams.id;
         $scope.fixtures = [];
-        $scope.players = [];
         $scope.team = null;
-     
+        // Get team information
+        teamsAPIservice.getTeamInfo($scope.id)
+        .success(function(response){
+            $scope.team = response;
+        });
+        // Get team's fixtures
         teamsAPIservice.getTeamFixtures($scope.id)
         .success(function(response){
             $scope.fixtures = response.fixtures;
         });
+    })
+
+    /* Controller which displays a list of players */
+    .controller('playersController', function($scope, $routeParams, teamsAPIservice) {
+        $scope.id = $routeParams.id;
+        $scope.players = [];
+        $scope.team = null;
+        // Get team information
+        teamsAPIservice.getTeamInfo($scope.id)
+        .success(function(response){
+            $scope.team = response;
+        });
+        // Get team's players
         teamsAPIservice.getTeamPlayers($scope.id)
         .success(function(response){
-           $scope.players = response; 
+            $scope.players = response.players; 
         });
     });

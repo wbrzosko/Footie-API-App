@@ -1,16 +1,19 @@
 <section id="main">
-  <a href="./#/teams"><- Back to teams list</a>
-  <nav id="secondary" class="main-nav">
-    <div class="driver-picture">
-      <div class="avatar">
-        <img ng-show="team" src="{{team.crestUrl}}" />
-        Team: {{team.name}}
-      </div>
+  <nav>    
+    <ul class="nav nav-tabs">
+        <li><a href="./#/teams">Back to teams list</a></li>
+        <li class="active"><a ng-href="./#/team/{{id}}">Team</a></li>
+        <li><a ng-href="./#/team/{{id}}/players">Players</a></li>
+    </ul>
+    <div class="container-fluid">
+        <div class="text-center">
+            <img ng-show="team" src="{{team.crestUrl}}" height="100" />
+        </div>
     </div>
   </nav>
 
   <div class="main-content">
-    <table class="table">
+    <table class="table table-striped">
       <thead>
         <th>Date</th> <th>Home Team</th> <th>Away Team</th> <th>Result</th>
       </thead>
@@ -24,5 +27,4 @@
       </tbody>
     </table>
   </div>
-
 </section>
