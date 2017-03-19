@@ -9,6 +9,11 @@ angular.module('footie.controllers',[])
         .success(function(response){
             //get the data from API
             $scope.teamsList = response.teams;
+                //retrieving each team's ID from the URL
+                angular.forEach($scope.teamsList, function(item) {
+                slug = item._links.self.href.split('teams/').pop();
+                item.teamID = slug; 
+            });
         });
     })
 
