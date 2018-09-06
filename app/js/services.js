@@ -1,11 +1,12 @@
 angular.module('footie.services',[]).
     factory('teamsAPIservice', function($http){
     var teamsAPI = {};
+    var competitionId = 2055;
     
     teamsAPI.getTeams = function() {
         return $http({
             method: 'GET',
-            url: 'http://api.football-data.org/v1/competitions/445/teams',
+            url: `http://api.football-data.org/v1/competitions/${competitionId}/teams`,
             params: {
                 format: 'json',
                 json_callback: 'JSON_CALLBACK'
@@ -49,7 +50,7 @@ angular.module('footie.services',[]).
     teamsAPI.getTable = function() {
         return $http({
             method: 'GET',
-            url: 'http://api.football-data.org/v1/competitions/445/leagueTable',
+            url: `http://api.football-data.org/v1/competitions/${competitionId}/leagueTable`,
             params: {
                 format: 'json',
                 json_callback: 'JSON_CALLBACK'
