@@ -1,0 +1,32 @@
+<nav>
+    <ul class="nav nav-tabs">
+        <li><a href="./#/table">Table</a></li>
+        <li><a ng-href="./#/teams">Teams</a></li>
+        <li class="active"><a ng-href="./#/fixtures">Fixtures</a></li>
+        <li><a><input type="text" ng-model="nameFilter" placeholder="Search..." /></a></li>
+    </ul>
+</nav>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Home</th>
+            <th>Away</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="fixture in fixtures | filter: nameFilter">
+            <td>
+                <img src="{{fixture.homeTeam.logo}}" width="50" height="50" />
+                <a ng-href="#/team/{{fixture.homeTeam.team_id}}">{{fixture.homeTeam.team_name}}</a>
+            </td>
+            <td>
+                <img src="{{fixture.awayTeam.logo}}" width="50" height="50" />
+                <a ng-href="#/team/{{fixture.awayTeam.team_id}}">{{fixture.awayTeam.team_name}}</a>
+            </td>
+            <td>
+                {{fixture.event_date}}
+            </td>
+        </tr>
+    </tbody>
+</table>

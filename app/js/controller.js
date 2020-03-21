@@ -7,12 +7,7 @@ angular.module('footie.controllers',[])
     teamsAPIservice.getTeams()
         .success(function(response){
             //get the data from API
-            $scope.teamsList = response.teams;
-                //retrieving each team's ID from the URL
-                angular.forEach($scope.teamsList, function(item) {
-                slug = item._links.self.href.split('teams/').pop();
-                item.teamID = slug; 
-            });
+            $scope.teamsList = response.api.teams;
         });
     })
 
@@ -57,11 +52,24 @@ angular.module('footie.controllers',[])
     teamsAPIservice.getTable()
         .success(function(response){
             //get the data from API
-            $scope.teamsList = response.standing;
-                //retrieving each team's ID from the URL
-                angular.forEach($scope.teamsList, function(item) {
-                slug = item._links.team.href.split('teams/').pop();
-                item.teamID = slug; 
-            });
+            $scope.teamsList = response.api.standings[0];
         });
+    })
+
+    /* Controller which displays all the teams */
+    .controller('fixturesController', function($scope, teamsAPIservice) {
+        $scope.fixtures = [];
+        
+        teamsAPIservice.getCurrentRound()
+        .success(response => {
+            teamsAPIservice.getFixtures(response.api.fixtures[0])
+            .success(function(response){
+                //get the data from API
+                $scope.fixtures = response.api.fixtures;
+            });
+        })
     });
+
+        
+
+    

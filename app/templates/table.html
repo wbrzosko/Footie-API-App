@@ -21,15 +21,15 @@
     </thead>  
       <tbody>
         <tr ng-repeat="team in teamsList | filter: nameFilter">
-            <td>{{team.position}}</td>
-            <td><a ng-href="#/team/{{team.teamID}}">{{team.teamName}}</a></td>
+            <td>{{team.rank}}</td>
+            <td><a ng-href="#/team/{{team.team_id}}">{{team.teamName}}</a></td>
             <td>{{team.points}}</td>
-            <td>{{team.playedGames}}</td>
-            <td>{{team.wins}}</td>
-            <td>{{team.draws}}</td>
-            <td>{{team.losses}}</td>
-            <td>{{team.goals}}</td>
-            <td>{{team.goalsAgainst}}</td>
+            <td>{{team.all.matchsPlayed}}</td>
+            <td>{{team.all.win}}</td>
+            <td>{{team.all.draw}}</td>
+            <td>{{team.all.lose}}</td>
+            <td>{{team.all.goalsFor}}</td>
+            <td>{{team.all.goalsAgainst}}</td>
         </tr>  
     </tbody>
   </table>
